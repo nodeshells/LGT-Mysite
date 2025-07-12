@@ -16,13 +16,17 @@ export function MuiHamburgerMenu({ isOpen, onClick }: MuiHamburgerMenuProps) {
       color="primary"
       aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
       sx={{
-        color: 'white',
+        color: 'rgba(255, 255, 255, 0.7)',
+        padding: '6px',
+        mt: '-6px',
+        transition: 'all 0.2s ease',
         '&:hover': {
-          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+          backgroundColor: 'transparent',
+          color: 'rgba(255, 255, 255, 1)',
         },
       }}
     >
-      {isOpen ? <CloseIcon /> : <MenuIcon />}
+      {isOpen ? <CloseIcon sx={{ fontSize: 28 }} /> : <MenuIcon sx={{ fontSize: 28 }} />}
     </IconButton>
   )
 }

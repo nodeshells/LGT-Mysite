@@ -1,6 +1,6 @@
 "use client"
 
-import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Avatar } from '@mui/material'
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import PersonIcon from '@mui/icons-material/Person'
 import WorkIcon from '@mui/icons-material/Work'
 import EmailIcon from '@mui/icons-material/Email'
@@ -41,7 +41,7 @@ export function MuiMaterialList() {
   return (
     <List sx={{ 
       width: '100%', 
-      maxWidth: 600,
+      maxWidth: 540,
       bgcolor: 'transparent',
     }}>
       {menuItems.map((item) => {
@@ -62,25 +62,22 @@ export function MuiMaterialList() {
               }}
             >
               <ListItemIcon>
-                <Avatar
-                  sx={{
-                    bgcolor: 'rgba(255, 255, 255, 0.1)',
-                    width: 48,
-                    height: 48,
-                  }}
-                >
-                  <Icon sx={{ color: 'white' }} />
-                </Avatar>
+                <Icon sx={{ 
+                  color: 'rgba(255, 255, 255, 0.7)', 
+                  fontSize: 28,
+                  mr: 1
+                }} />
               </ListItemIcon>
               <ListItemText 
                 primary={item.label}
                 secondary={item.description}
                 primaryTypographyProps={{
-                  fontSize: '1.125rem',
-                  fontWeight: 500,
+                  fontSize: '1rem',
+                  fontWeight: 400,
                   color: 'white',
                 }}
                 secondaryTypographyProps={{
+                  fontSize: '0.875rem',
                   color: 'rgba(255, 255, 255, 0.6)',
                 }}
                 sx={{ ml: 2 }}

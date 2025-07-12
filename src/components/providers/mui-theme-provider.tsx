@@ -26,6 +26,21 @@ const darkTheme = createTheme({
     fontFamily: 'var(--font-geist-sans), Arial, Helvetica, sans-serif',
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#0a0a0a',
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'transparent !important',
+          backgroundImage: 'none !important',
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {

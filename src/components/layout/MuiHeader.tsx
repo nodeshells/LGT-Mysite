@@ -31,30 +31,39 @@ export function MuiHeader() {
       <AppBar 
         position="fixed" 
         sx={{ 
-          background: 'transparent',
-          boxShadow: 'none',
-          p: 2,
+          background: 'rgba(10, 10, 10, 0.1) !important',
+          backgroundColor: 'transparent !important',
+          backdropFilter: 'blur(1px) !important',
+          WebkitBackdropFilter: 'blur(1px) !important',
+          boxShadow: 'none !important',
+          p: 0,
+          px: 3,
+          height: 'auto',
+          borderBottom: 'none',
+          top: 0,
+          zIndex: 1100,
         }}
       >
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', py: 2 }}>
           <Link href="/" style={{ textDecoration: 'none' }}>
             <Box>
               <Typography 
-                variant="h4" 
+                variant="h5" 
                 component="h1" 
                 sx={{ 
                   fontWeight: 300,
                   color: 'white',
-                  fontSize: { xs: '1.875rem', md: '2.5rem' },
+                  fontSize: { xs: '1.5rem', md: '1.875rem' },
                 }}
               >
                 LGT-MySite
               </Typography>
               <Typography 
-                variant="body2" 
+                variant="caption" 
                 sx={{ 
                   color: 'rgba(255, 255, 255, 0.7)',
-                  mt: 0.5,
+                  mt: 0.25,
+                  display: 'block',
                 }}
               >
                 Claudeコードが作りました
