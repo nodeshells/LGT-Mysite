@@ -3,19 +3,19 @@
 import { useState } from "react"
 import { AppBar, Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
-import PersonIcon from '@mui/icons-material/Person'
-import WorkIcon from '@mui/icons-material/Work'
-import EmailIcon from '@mui/icons-material/Email'
-import ArticleIcon from '@mui/icons-material/Article'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import TimelineIcon from '@mui/icons-material/Timeline'
+import CodeIcon from '@mui/icons-material/Code'
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
 import { MuiHamburgerMenu } from "@/components/ui/mui-hamburger-menu"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
 
 const menuItems = [
-  { href: "/about", label: "About", icon: PersonIcon },
-  { href: "/work", label: "Work", icon: WorkIcon },
-  { href: "/contact", label: "Contact", icon: EmailIcon },
-  { href: "/blog", label: "Blog", icon: ArticleIcon },
+  { href: "/profile", label: "Profile", icon: AccountCircleIcon },
+  { href: "/timeline", label: "Timeline", icon: TimelineIcon },
+  { href: "/skills", label: "Skills", icon: CodeIcon },
+  { href: "/hobby", label: "Hobby", icon: SportsEsportsIcon },
 ]
 
 export function MuiHeader() {
