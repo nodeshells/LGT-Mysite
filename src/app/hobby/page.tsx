@@ -1,6 +1,7 @@
 "use client"
 
-import { Box, Container, IconButton, Typography, Grid, Card, CardContent, Chip } from "@mui/material"
+import { Box, Container, IconButton, Typography, Card, CardContent, Chip } from "@mui/material"
+import Grid from '@mui/material/Grid'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useRouter } from 'next/navigation'
 
@@ -80,7 +81,7 @@ export default function HobbyPage() {
 
         <Grid container spacing={3}>
           {hobbies.map((hobby, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
               <Card sx={{
                 bgcolor: 'rgba(255, 255, 255, 0.05)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',

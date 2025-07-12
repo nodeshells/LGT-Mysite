@@ -84,7 +84,7 @@ export default function TimelinePage() {
                 </Typography>
               </TimelineOppositeContent>
               <TimelineSeparator>
-                <TimelineDot color={item.color as any} variant="outlined">
+                <TimelineDot color={item.color as 'primary' | 'secondary' | 'success' | 'info'} variant="outlined">
                   {item.icon}
                 </TimelineDot>
                 {index < timelineData.length - 1 && <TimelineConnector />}

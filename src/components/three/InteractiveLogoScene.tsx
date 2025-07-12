@@ -3,7 +3,7 @@
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Box, Float } from "@react-three/drei"
 import { Suspense, useRef, useState, useEffect } from "react"
-import type { Mesh } from "three"
+import type { Mesh, MeshStandardMaterial } from "three"
 
 interface AnimatedBoxProps {
   activeContent: 'menu' | 'credits' | 'profile'
@@ -50,7 +50,8 @@ function AnimatedBox({ activeContent }: AnimatedBoxProps) {
         
         // エミッシブ強度の変化
         if (meshRef.current.material && 'emissiveIntensity' in meshRef.current.material) {
-          (meshRef.current.material as any).emissiveIntensity = 0.1 + easeOut * 0.4
+          const material = meshRef.current.material as MeshStandardMaterial
+          material.emissiveIntensity = 0.1 + easeOut * 0.4
         }
       } else {
         // 通常時のアニメーション

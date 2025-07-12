@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from 'react'
-import { Box, Container, IconButton, Typography, Grid, Card, CardContent, LinearProgress, Chip, ToggleButton, ToggleButtonGroup } from "@mui/material"
+import { Box, Container, IconButton, Typography, Card, CardContent, LinearProgress, Chip, ToggleButton, ToggleButtonGroup } from "@mui/material"
+import Grid from '@mui/material/Grid'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useRouter } from 'next/navigation'
 
@@ -121,7 +122,7 @@ export default function SkillsPage() {
 
         <Grid container spacing={3}>
           {filteredSkills.map((skill, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
               <Card sx={{
                 bgcolor: 'rgba(255, 255, 255, 0.05)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -164,7 +165,7 @@ export default function SkillsPage() {
                     <LinearProgress 
                       variant="determinate" 
                       value={skill.level} 
-                      color={getLevelColor(skill.level) as any}
+                      color={getLevelColor(skill.level) as 'primary' | 'secondary' | 'warning'}
                       sx={{
                         height: 8,
                         borderRadius: 4,

@@ -9,7 +9,6 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports'
 import InfoIcon from '@mui/icons-material/Info'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { useRouter } from 'next/navigation'
-import { ContentSwitcher } from './ContentSwitcher'
 import { CreditsContent } from './CreditsContent'
 import { ProfileContent } from './ProfileContent'
 
