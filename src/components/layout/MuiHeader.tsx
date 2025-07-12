@@ -1,0 +1,135 @@
+"use client"
+
+import { useState } from "react"
+import { AppBar, Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import PersonIcon from '@mui/icons-material/Person'
+import WorkIcon from '@mui/icons-material/Work'
+import EmailIcon from '@mui/icons-material/Email'
+import ArticleIcon from '@mui/icons-material/Article'
+import { MuiHamburgerMenu } from "@/components/ui/mui-hamburger-menu"
+import Link from "next/link"
+import { useRouter } from 'next/navigation'
+
+const menuItems = [
+  { href: "/about", label: "About", icon: PersonIcon },
+  { href: "/work", label: "Work", icon: WorkIcon },
+  { href: "/contact", label: "Contact", icon: EmailIcon },
+  { href: "/blog", label: "Blog", icon: ArticleIcon },
+]
+
+export function MuiHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
+
+  const handleDrawerToggle = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  return (
+    <>
+      <AppBar 
+        position="fixed" 
+        sx={{ 
+          background: 'transparent',
+          boxShadow: 'none',
+          p: 2,
+        }}
+      >
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Link href="/" style={{ textDecoration: 'none' }}>
+            <Box>
+              <Typography 
+                variant="h4" 
+                component="h1" 
+                sx={{ 
+                  fontWeight: 300,
+                  color: 'white',
+                  fontSize: { xs: '1.875rem', md: '2.5rem' },
+                }}
+              >
+                LGT-MySite
+              </Typography>
+              <Typography 
+                variant="body2" 
+                sx={{ 
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  mt: 0.5,
+                }}
+              >
+                Claudeコードが作りました
+              </Typography>
+            </Box>
+          </Link>
+          
+          <MuiHamburgerMenu 
+            isOpen={isMenuOpen}
+            onClick={handleDrawerToggle}
+          />
+        </Box>
+      </AppBar>
+
+      <Drawer
+        anchor="left"
+        open={isMenuOpen}
+        onClose={handleDrawerToggle}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: 320,
+            bgcolor: '#0a0a0a',
+            color: 'white',
+          },
+        }}
+      >
+        <Box sx={{ p: 3 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 4 }}>
+            <IconButton 
+              onClick={handleDrawerToggle}
+              sx={{ 
+                color: 'white',
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                },
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+          
+          <List>
+            {menuItems.map((item) => {
+              const Icon = item.icon
+              return (
+                <ListItem key={item.href} disablePadding sx={{ mb: 1 }}>
+                  <ListItemButton
+                    onClick={() => {
+                      router.push(item.href)
+                      setIsMenuOpen(false)
+                    }}
+                    sx={{
+                      borderRadius: 1,
+                      '&:hover': {
+                        bgcolor: 'rgba(255, 255, 255, 0.08)',
+                      },
+                    }}
+                  >
+                    <ListItemIcon>
+                      <Icon sx={{ color: 'white' }} />
+                    </ListItemIcon>
+                    <ListItemText 
+                      primary={item.label}
+                      primaryTypographyProps={{
+                        fontSize: '1.25rem',
+                        fontWeight: 300,
+                      }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              )
+            })}
+          </List>
+        </Box>
+      </Drawer>
+    </>
+  )
+}
