@@ -1,6 +1,12 @@
 name = "lgt-mysite"
+main = ".open-next/worker.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
+
+# Assets configuration
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
 
 # Build configuration
 [build]
