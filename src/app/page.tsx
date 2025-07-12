@@ -50,7 +50,7 @@ export default function Home() {
           borderRadius: '24px 24px 0 0',
           pt: { xs: 3, sm: 4, md: 6 }, // 24px, 32px, 48px
           pb: { xs: 4, sm: 6, md: 8 }, // 32px, 48px, 64px
-          px: { xs: 2, sm: 3, md: 4 }, // 16px, 24px, 32px
+          px: 3, // ヘッダーと同じ24px
           display: 'flex',
           alignItems: 'flex-start',
           justifyContent: 'center',

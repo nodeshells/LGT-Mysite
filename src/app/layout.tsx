@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Kenta's personal portfolio website",
 };
 
-import { MuiHeader } from "@/components/layout/MuiHeader"
+import { ConditionalHeader } from "@/components/layout/ConditionalHeader"
 import { MuiThemeProvider } from "@/components/providers/mui-theme-provider"
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
         style={{ margin: 0, backgroundColor: '#0a0a0a' }}
       >
         <MuiThemeProvider>
-          <MuiHeader />
+          <ConditionalHeader />
           {children}
         </MuiThemeProvider>
       </body>

@@ -48,28 +48,29 @@ export function MuiMaterialList({ onContentChange }: MuiMaterialListProps = {}) 
   }
 
   const menuList = (
-    <Box>
+    <Box sx={{ width: '100%' }}>
       <List sx={{ 
-        width: '100%', 
+        width: '100%',
         maxWidth: 540,
+        mx: 'auto',
         bgcolor: 'transparent',
       }}>
         {/* Profile - Content Switch */}
-        <ListItem disablePadding sx={{ mb: 1 }}>
+        <ListItem disablePadding sx={{ mb: 0.5 }}>
           <ListItemButton
             onClick={() => handleContentChange('profile')}
             sx={{
               borderRadius: 2,
+              px: 0,
               '&:hover': {
                 bgcolor: 'rgba(255, 255, 255, 0.05)',
               },
             }}
           >
-            <ListItemIcon>
+            <ListItemIcon sx={{ minWidth: 40 }}>
               <AccountCircleIcon sx={{ 
                 color: 'rgba(255, 255, 255, 0.7)', 
-                fontSize: 28,
-                mr: 1
+                fontSize: 28
               }} />
             </ListItemIcon>
             <ListItemText 
@@ -84,9 +85,9 @@ export function MuiMaterialList({ onContentChange }: MuiMaterialListProps = {}) 
                 fontSize: '0.875rem',
                 color: 'rgba(255, 255, 255, 0.6)',
               }}
-              sx={{ ml: 2 }}
+              sx={{ ml: 1, flex: 1 }}
             />
-            <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)' }} />
+            <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)', ml: 'auto' }} />
           </ListItemButton>
         </ListItem>
 
@@ -97,23 +98,23 @@ export function MuiMaterialList({ onContentChange }: MuiMaterialListProps = {}) 
             <ListItem 
               key={item.href} 
               disablePadding
-              sx={{ mb: 1 }}
+              sx={{ mb: 0.5 }}
             >
               <ListItemButton
                 onClick={() => router.push(item.href)}
                 sx={{
                   borderRadius: 2,
+                  px: 0,
                   '&:hover': {
                     bgcolor: 'rgba(255, 255, 255, 0.05)',
                   },
                 }}
               >
-                <ListItemIcon>
+                <ListItemIcon sx={{ minWidth: 40 }}>
                   <Icon sx={{ 
                     color: 'rgba(255, 255, 255, 0.7)', 
                     fontSize: 28,
-                    mr: 1
-                  }} />
+                      }} />
                 </ListItemIcon>
                 <ListItemText 
                   primary={item.label}
@@ -127,30 +128,30 @@ export function MuiMaterialList({ onContentChange }: MuiMaterialListProps = {}) 
                     fontSize: '0.875rem',
                     color: 'rgba(255, 255, 255, 0.6)',
                   }}
-                  sx={{ ml: 2 }}
+                  sx={{ ml: 1, flex: 1 }}
                 />
-                <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)' }} />
+                <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)', ml: 'auto' }} />
               </ListItemButton>
             </ListItem>
           )
         })}
 
         {/* Credits - Content Switch */}
-        <ListItem disablePadding sx={{ mb: 1 }}>
+        <ListItem disablePadding sx={{ mb: 0.5 }}>
           <ListItemButton
             onClick={() => handleContentChange('credits')}
             sx={{
               borderRadius: 2,
+              px: 0,
               '&:hover': {
                 bgcolor: 'rgba(255, 255, 255, 0.05)',
               },
             }}
           >
-            <ListItemIcon>
+            <ListItemIcon sx={{ minWidth: 40 }}>
               <InfoIcon sx={{ 
                 color: 'rgba(255, 255, 255, 0.7)', 
                 fontSize: 28,
-                mr: 1
               }} />
             </ListItemIcon>
             <ListItemText 
@@ -165,9 +166,9 @@ export function MuiMaterialList({ onContentChange }: MuiMaterialListProps = {}) 
                 fontSize: '0.875rem',
                 color: 'rgba(255, 255, 255, 0.6)',
               }}
-              sx={{ ml: 2 }}
+              sx={{ ml: 1, flex: 1 }}
             />
-            <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)' }} />
+            <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)', ml: 'auto' }} />
           </ListItemButton>
         </ListItem>
         
