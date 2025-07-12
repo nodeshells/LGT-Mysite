@@ -10,6 +10,10 @@
 !.yarn/releases
 !.yarn/versions
 
+# pnpm
+pnpm-debug.log*
+.pnpm-store/
+
 # testing
 /coverage
 
@@ -32,6 +36,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+
+# wrangler
+.wrangler/
 
 # vercel
 .vercel
