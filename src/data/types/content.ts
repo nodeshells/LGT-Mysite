@@ -5,7 +5,7 @@ export interface Profile {
   location: string
   occupation: string
   education: string
-  interests: string[]
+  expertise: string[]
 }
 
 export interface Skill {

@@ -1,7 +1,7 @@
 "use client"
 
-import { Box, Container, IconButton, Typography } from "@mui/material"
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { Box, Container } from "@mui/material"
+import { ProfileContent } from "@/components/ui/ProfileContent"
 import { useRouter } from 'next/navigation'
 
 export default function ProfilePage() {
@@ -9,33 +9,17 @@ export default function ProfilePage() {
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#0a0a0a' }}>
-      <Container maxWidth="lg">
-        <Box sx={{ pt: 2 }}>
-          <IconButton 
-            onClick={() => router.back()}
-            sx={{ 
-              color: 'white',
-              '&:hover': {
-                bgcolor: 'rgba(255, 255, 255, 0.1)'
-              }
-            }}
-          >
-            <ArrowBackIcon />
-          </IconButton>
-        </Box>
-        
-        <Box sx={{ 
-          py: 4, 
-          textAlign: 'center',
-          color: 'white'
-        }}>
-          <Typography variant="h2" component="h1" gutterBottom>
-            My Profile
-          </Typography>
-          <Typography variant="h6" sx={{ opacity: 0.7 }}>
-            プロフィールコンテンツをここに追加
-          </Typography>
-        </Box>
+      <Container 
+        maxWidth="md" 
+        sx={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          minHeight: '100vh',
+          py: 4
+        }}
+      >
+        <ProfileContent onBack={() => router.back()} />
       </Container>
     </Box>
   )

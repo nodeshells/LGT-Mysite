@@ -1,17 +1,17 @@
 {
   "profile": {
-    "name": "Developer",
-    "tagline": "フルスタックエンジニアを目指してる",
+    "name": "ken4646",
+    "tagline": "エンジニアっぽいなにか",
     "avatar": "👤",
-    "location": "Tokyo, Japan",
-    "occupation": "Software Engineer",
-    "education": "Computer Science",
-    "interests": [
-      "Web Development",
-      "AI/ML",
-      "UI/UX Design",
-      "3D Graphics",
-      "Cloud Architecture"
+    "location": "Shimane, Japan",
+    "occupation": "Software Developer",
+    "education": "",
+    "expertise": [
+      "フロントエンド開発",
+      "バックエンド開発", 
+      "UI/UXデザイン",
+      "データベース設計",
+      "DevOps/CI/CD"
     ]
   },
   "skills": {
