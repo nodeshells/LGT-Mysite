@@ -14,40 +14,19 @@ import SchoolIcon from '@mui/icons-material/School'
 import CodeIcon from '@mui/icons-material/Code'
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
 import { useRouter } from 'next/navigation'
+import { useTimeline, useMeta } from '@/hooks/useContent'
 
-const timelineData = [
-  {
-    date: '2024年',
-    title: 'フルスタックエンジニアへの挑戦',
-    description: 'フロントエンド・バックエンド両方のスキルを磨く',
-    icon: <RocketLaunchIcon />,
-    color: 'primary'
-  },
-  {
-    date: '2023年',
-    title: 'AIとの共創開始',
-    description: 'Claude、ChatGPTなどのAIツールを活用した開発',
-    icon: <CodeIcon />,
-    color: 'secondary'
-  },
-  {
-    date: '2022年',
-    title: 'Webエンジニアとしてキャリアスタート',
-    description: 'React、Next.jsを使ったモダンな開発を学ぶ',
-    icon: <WorkIcon />,
-    color: 'success'
-  },
-  {
-    date: '2020年',
-    title: 'プログラミング学習開始',
-    description: 'HTML/CSS/JavaScriptの基礎から学習',
-    icon: <SchoolIcon />,
-    color: 'info'
-  }
-]
+const iconMap = {
+  RocketLaunchIcon: <RocketLaunchIcon />,
+  CodeIcon: <CodeIcon />,
+  WorkIcon: <WorkIcon />,
+  SchoolIcon: <SchoolIcon />
+}
 
 export default function TimelinePage() {
   const router = useRouter()
+  const timelineData = useTimeline()
+  const meta = useMeta()
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#0a0a0a', pt: 2 }}>
@@ -68,10 +47,10 @@ export default function TimelinePage() {
         
         <Box sx={{ mb: 6, textAlign: 'center' }}>
           <Typography variant="h2" component="h1" gutterBottom sx={{ color: 'white' }}>
-            My Timeline
+            {meta.timelinePageTitle}
           </Typography>
           <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-            私の歩みを時系列で
+            {meta.timelinePageDescription}
           </Typography>
         </Box>
 
@@ -85,7 +64,7 @@ export default function TimelinePage() {
               </TimelineOppositeContent>
               <TimelineSeparator>
                 <TimelineDot color={item.color as 'primary' | 'secondary' | 'success' | 'info'} variant="outlined">
-                  {item.icon}
+                  {iconMap[item.icon as keyof typeof iconMap]}
                 </TimelineDot>
                 {index < timelineData.length - 1 && <TimelineConnector />}
               </TimelineSeparator>

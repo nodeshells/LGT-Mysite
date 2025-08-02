@@ -1,0 +1,262 @@
+{
+  "profile": {
+    "name": "Developer",
+    "tagline": "フルスタックエンジニアを目指してる",
+    "avatar": "👤",
+    "location": "Tokyo, Japan",
+    "occupation": "Software Engineer",
+    "education": "Computer Science",
+    "interests": [
+      "Web Development",
+      "AI/ML",
+      "UI/UX Design",
+      "3D Graphics",
+      "Cloud Architecture"
+    ]
+  },
+  "skills": {
+    "categories": {
+      "all": "すべて",
+      "frontend": "フロントエンド",
+      "backend": "バックエンド",
+      "tools": "ツール",
+      "other": "その他"
+    },
+    "items": [
+      {
+        "name": "React",
+        "category": "frontend",
+        "level": 85,
+        "icon": "⚛️"
+      },
+      {
+        "name": "Next.js",
+        "category": "frontend",
+        "level": 80,
+        "icon": "▲"
+      },
+      {
+        "name": "TypeScript",
+        "category": "frontend",
+        "level": 75,
+        "icon": "🔷"
+      },
+      {
+        "name": "HTML/CSS",
+        "category": "frontend",
+        "level": 90,
+        "icon": "🎨"
+      },
+      {
+        "name": "Tailwind CSS",
+        "category": "frontend",
+        "level": 70,
+        "icon": "🌊"
+      },
+      {
+        "name": "Material-UI",
+        "category": "frontend",
+        "level": 75,
+        "icon": "🎯"
+      },
+      {
+        "name": "Node.js",
+        "category": "backend",
+        "level": 70,
+        "icon": "🟢"
+      },
+      {
+        "name": "Python",
+        "category": "backend",
+        "level": 65,
+        "icon": "🐍"
+      },
+      {
+        "name": "PostgreSQL",
+        "category": "backend",
+        "level": 60,
+        "icon": "🐘"
+      },
+      {
+        "name": "REST API",
+        "category": "backend",
+        "level": 75,
+        "icon": "🔌"
+      },
+      {
+        "name": "Git/GitHub",
+        "category": "tools",
+        "level": 80,
+        "icon": "🐙"
+      },
+      {
+        "name": "VS Code",
+        "category": "tools",
+        "level": 90,
+        "icon": "💻"
+      },
+      {
+        "name": "Docker",
+        "category": "tools",
+        "level": 55,
+        "icon": "🐳"
+      },
+      {
+        "name": "Figma",
+        "category": "tools",
+        "level": 60,
+        "icon": "🎨"
+      },
+      {
+        "name": "AI Tools",
+        "category": "other",
+        "level": 85,
+        "icon": "🤖"
+      },
+      {
+        "name": "English",
+        "category": "other",
+        "level": 70,
+        "icon": "🌐"
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "date": "2024年",
+      "title": "フルスタックエンジニアへの挑戦",
+      "description": "フロントエンド・バックエンド両方のスキルを磨く",
+      "icon": "RocketLaunchIcon",
+      "color": "primary"
+    },
+    {
+      "date": "2023年",
+      "title": "AIとの共創開始",
+      "description": "Claude、ChatGPTなどのAIツールを活用した開発",
+      "icon": "CodeIcon",
+      "color": "secondary"
+    },
+    {
+      "date": "2022年",
+      "title": "Webエンジニアとしてキャリアスタート",
+      "description": "React、Next.jsを使ったモダンな開発を学ぶ",
+      "icon": "WorkIcon",
+      "color": "success"
+    },
+    {
+      "date": "2020年",
+      "title": "プログラミング学習開始",
+      "description": "HTML/CSS/JavaScriptの基礎から学習",
+      "icon": "SchoolIcon",
+      "color": "info"
+    }
+  ],
+  "hobbies": [
+    {
+      "title": "ゲーム",
+      "icon": "🎮",
+      "description": "RPGやストラテジーゲームが好き",
+      "tags": ["Steam", "PS5", "インディーゲーム"],
+      "color": "rgba(139, 92, 246, 0.2)"
+    },
+    {
+      "title": "読書",
+      "icon": "📚",
+      "description": "技術書やSF小説をよく読みます",
+      "tags": ["技術書", "SF", "ビジネス書"],
+      "color": "rgba(59, 130, 246, 0.2)"
+    },
+    {
+      "title": "アニメ・映画",
+      "icon": "🎬",
+      "description": "SFやファンタジー作品が特に好き",
+      "tags": ["Netflix", "Amazon Prime", "アニメ"],
+      "color": "rgba(236, 72, 153, 0.2)"
+    },
+    {
+      "title": "音楽",
+      "icon": "🎵",
+      "description": "Lo-fiやChillな音楽を聴きながら作業",
+      "tags": ["Lo-fi", "Jazz", "Game OST"],
+      "color": "rgba(16, 185, 129, 0.2)"
+    },
+    {
+      "title": "カフェ巡り",
+      "icon": "☕",
+      "description": "落ち着いた雰囲気のカフェで作業するのが好き",
+      "tags": ["コーヒー", "ノマドワーク", "東京カフェ"],
+      "color": "rgba(245, 158, 11, 0.2)"
+    },
+    {
+      "title": "技術記事",
+      "icon": "✍️",
+      "description": "Qiitaやnoteで技術記事を書いています",
+      "tags": ["Qiita", "note", "ブログ"],
+      "color": "rgba(239, 68, 68, 0.2)"
+    }
+  ],
+  "credits": {
+    "implementer": {
+      "label": "実装者",
+      "name": "Claude Code",
+      "icon": "CodeIcon"
+    },
+    "collaborator": {
+      "label": "協力者",
+      "name": "nodeshells",
+      "url": "https://github.com/nodeshells",
+      "icon": "GitHubIcon"
+    },
+    "footer": "Made with 💙 by AI and Human collaboration"
+  },
+  "navigation": [
+    {
+      "href": "/profile",
+      "label": "My Profile",
+      "icon": "AccountCircleIcon",
+      "description": "私のプロフィールを見る",
+      "isContentSwitch": true
+    },
+    {
+      "href": "/timeline",
+      "label": "My Timeline",
+      "icon": "TimelineIcon",
+      "description": "時系列でみる私の歩み",
+      "isContentSwitch": false
+    },
+    {
+      "href": "/skills",
+      "label": "My Skills",
+      "icon": "CodeIcon",
+      "description": "技術スタックとスキルセット",
+      "isContentSwitch": false
+    },
+    {
+      "href": "/hobby",
+      "label": "My Hobby",
+      "icon": "SportsEsportsIcon",
+      "description": "趣味と興味のあること",
+      "isContentSwitch": false
+    },
+    {
+      "href": "/credits",
+      "label": "Credits",
+      "icon": "InfoIcon",
+      "description": "このサイトについて",
+      "isContentSwitch": true
+    }
+  ],
+  "meta": {
+    "siteTitle": "My Portfolio",
+    "siteDescription": "フルスタックエンジニアを目指すDeveloperのポートフォリオサイト",
+    "homeTitle": "Home",
+    "profilePageTitle": "My Profile",
+    "profilePageDescription": "プロフィールコンテンツをここに追加",
+    "skillsPageTitle": "My Skills",
+    "skillsPageDescription": "技術スタックとスキルレベル",
+    "timelinePageTitle": "My Timeline",
+    "timelinePageDescription": "私の歩みを時系列で",
+    "hobbyPageTitle": "My Hobby",
+    "hobbyPageDescription": "趣味と興味のあること"
+  }
+}

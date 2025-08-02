@@ -5,50 +5,13 @@ import { Box, Container, IconButton, Typography, Card, CardContent, LinearProgre
 import Grid from '@mui/material/Grid'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useRouter } from 'next/navigation'
+import { useSkills, useMeta } from '@/hooks/useContent'
 
-interface Skill {
-  name: string
-  category: 'frontend' | 'backend' | 'tools' | 'other'
-  level: number
-  icon: string
-}
-
-const skillsData: Skill[] = [
-  // Frontend
-  { name: 'React', category: 'frontend', level: 85, icon: '⚛️' },
-  { name: 'Next.js', category: 'frontend', level: 80, icon: '▲' },
-  { name: 'TypeScript', category: 'frontend', level: 75, icon: '🔷' },
-  { name: 'HTML/CSS', category: 'frontend', level: 90, icon: '🎨' },
-  { name: 'Tailwind CSS', category: 'frontend', level: 70, icon: '🌊' },
-  { name: 'Material-UI', category: 'frontend', level: 75, icon: '🎯' },
-  
-  // Backend
-  { name: 'Node.js', category: 'backend', level: 70, icon: '🟢' },
-  { name: 'Python', category: 'backend', level: 65, icon: '🐍' },
-  { name: 'PostgreSQL', category: 'backend', level: 60, icon: '🐘' },
-  { name: 'REST API', category: 'backend', level: 75, icon: '🔌' },
-  
-  // Tools
-  { name: 'Git/GitHub', category: 'tools', level: 80, icon: '🐙' },
-  { name: 'VS Code', category: 'tools', level: 90, icon: '💻' },
-  { name: 'Docker', category: 'tools', level: 55, icon: '🐳' },
-  { name: 'Figma', category: 'tools', level: 60, icon: '🎨' },
-  
-  // Other
-  { name: 'AI Tools', category: 'other', level: 85, icon: '🤖' },
-  { name: 'English', category: 'other', level: 70, icon: '🌐' },
-]
-
-const categoryLabels = {
-  all: 'すべて',
-  frontend: 'フロントエンド',
-  backend: 'バックエンド',
-  tools: 'ツール',
-  other: 'その他'
-}
 
 export default function SkillsPage() {
   const router = useRouter()
+  const skills = useSkills()
+  const meta = useMeta()
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
   const handleCategoryChange = (_: React.MouseEvent<HTMLElement>, newCategory: string | null) => {
@@ -58,8 +21,8 @@ export default function SkillsPage() {
   }
 
   const filteredSkills = selectedCategory === 'all' 
-    ? skillsData 
-    : skillsData.filter(skill => skill.category === selectedCategory)
+    ? skills.items 
+    : skills.items.filter(skill => skill.category === selectedCategory)
 
   const getLevelColor = (level: number) => {
     if (level >= 80) return 'primary'
@@ -86,10 +49,10 @@ export default function SkillsPage() {
         
         <Box sx={{ mb: 6, textAlign: 'center' }}>
           <Typography variant="h2" component="h1" gutterBottom sx={{ color: 'white' }}>
-            My Skills
+            {meta.skillsPageTitle}
           </Typography>
           <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-            技術スタックとスキルレベル
+            {meta.skillsPageDescription}
           </Typography>
         </Box>
 
@@ -112,11 +75,11 @@ export default function SkillsPage() {
               },
             }}
           >
-            <ToggleButton value="all">すべて</ToggleButton>
-            <ToggleButton value="frontend">フロントエンド</ToggleButton>
-            <ToggleButton value="backend">バックエンド</ToggleButton>
-            <ToggleButton value="tools">ツール</ToggleButton>
-            <ToggleButton value="other">その他</ToggleButton>
+            <ToggleButton value="all">{skills.categories.all}</ToggleButton>
+            <ToggleButton value="frontend">{skills.categories.frontend}</ToggleButton>
+            <ToggleButton value="backend">{skills.categories.backend}</ToggleButton>
+            <ToggleButton value="tools">{skills.categories.tools}</ToggleButton>
+            <ToggleButton value="other">{skills.categories.other}</ToggleButton>
           </ToggleButtonGroup>
         </Box>
 
@@ -143,7 +106,7 @@ export default function SkillsPage() {
                         {skill.name}
                       </Typography>
                       <Chip 
-                        label={categoryLabels[skill.category]} 
+                        label={skills.categories[skill.category]} 
                         size="small"
                         sx={{ 
                           bgcolor: 'rgba(255, 255, 255, 0.1)',
