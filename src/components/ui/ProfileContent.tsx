@@ -5,12 +5,15 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import WorkIcon from '@mui/icons-material/Work'
 import SchoolIcon from '@mui/icons-material/School'
+import { useProfile } from '@/hooks/useContent'
 
 interface ProfileContentProps {
   onBack: () => void
 }
 
 export function ProfileContent({ onBack }: ProfileContentProps) {
+  const profile = useProfile()
+  
   return (
     <Box sx={{ width: '100%', maxWidth: 540 }}>
       <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -47,15 +50,15 @@ export function ProfileContent({ onBack }: ProfileContentProps) {
             }}
           >
             <Typography variant="h3" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-              👤
+              {profile.avatar}
             </Typography>
           </Avatar>
           <Box>
             <Typography variant="h5" sx={{ color: 'white', mb: 0.5 }}>
-              Developer
+              {profile.name}
             </Typography>
             <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-              フルスタックエンジニアを目指してる
+              {profile.tagline}
             </Typography>
           </Box>
         </Box>
@@ -64,21 +67,21 @@ export function ProfileContent({ onBack }: ProfileContentProps) {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <LocationOnIcon sx={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: 20 }} />
             <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-              Tokyo, Japan
+              {profile.location}
             </Typography>
           </Box>
           
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <WorkIcon sx={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: 20 }} />
             <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-              Software Engineer
+              {profile.occupation}
             </Typography>
           </Box>
           
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <SchoolIcon sx={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: 20 }} />
             <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-              Computer Science
+              {profile.education}
             </Typography>
           </Box>
         </Box>
@@ -94,36 +97,19 @@ export function ProfileContent({ onBack }: ProfileContentProps) {
           興味のある分野
         </Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          <Chip label="Web Development" sx={{ 
-            bgcolor: 'rgba(255, 255, 255, 0.1)',
-            color: 'white',
-            borderColor: 'rgba(255, 255, 255, 0.2)',
-            '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.15)' }
-          }} variant="outlined" />
-          <Chip label="AI/ML" sx={{ 
-            bgcolor: 'rgba(255, 255, 255, 0.1)',
-            color: 'white',
-            borderColor: 'rgba(255, 255, 255, 0.2)',
-            '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.15)' }
-          }} variant="outlined" />
-          <Chip label="UI/UX Design" sx={{ 
-            bgcolor: 'rgba(255, 255, 255, 0.1)',
-            color: 'white',
-            borderColor: 'rgba(255, 255, 255, 0.2)',
-            '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.15)' }
-          }} variant="outlined" />
-          <Chip label="3D Graphics" sx={{ 
-            bgcolor: 'rgba(255, 255, 255, 0.1)',
-            color: 'white',
-            borderColor: 'rgba(255, 255, 255, 0.2)',
-            '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.15)' }
-          }} variant="outlined" />
-          <Chip label="Cloud Architecture" sx={{ 
-            bgcolor: 'rgba(255, 255, 255, 0.1)',
-            color: 'white',
-            borderColor: 'rgba(255, 255, 255, 0.2)',
-            '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.15)' }
-          }} variant="outlined" />
+          {profile.interests.map((interest, index) => (
+            <Chip 
+              key={index}
+              label={interest} 
+              sx={{ 
+                bgcolor: 'rgba(255, 255, 255, 0.1)',
+                color: 'white',
+                borderColor: 'rgba(255, 255, 255, 0.2)',
+                '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.15)' }
+              }} 
+              variant="outlined" 
+            />
+          ))}
         </Box>
       </Paper>
     </Box>

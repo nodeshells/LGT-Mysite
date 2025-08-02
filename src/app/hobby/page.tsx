@@ -4,54 +4,13 @@ import { Box, Container, IconButton, Typography, Card, CardContent, Chip } from 
 import Grid from '@mui/material/Grid'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useRouter } from 'next/navigation'
+import { useHobbies, useMeta } from '@/hooks/useContent'
 
-const hobbies = [
-  {
-    title: 'ゲーム',
-    icon: '🎮',
-    description: 'RPGやストラテジーゲームが好き',
-    tags: ['Steam', 'PS5', 'インディーゲーム'],
-    color: 'rgba(139, 92, 246, 0.2)'
-  },
-  {
-    title: '読書',
-    icon: '📚',
-    description: '技術書やSF小説をよく読みます',
-    tags: ['技術書', 'SF', 'ビジネス書'],
-    color: 'rgba(59, 130, 246, 0.2)'
-  },
-  {
-    title: 'アニメ・映画',
-    icon: '🎬',
-    description: 'SFやファンタジー作品が特に好き',
-    tags: ['Netflix', 'Amazon Prime', 'アニメ'],
-    color: 'rgba(236, 72, 153, 0.2)'
-  },
-  {
-    title: '音楽',
-    icon: '🎵',
-    description: 'Lo-fiやChillな音楽を聴きながら作業',
-    tags: ['Lo-fi', 'Jazz', 'Game OST'],
-    color: 'rgba(16, 185, 129, 0.2)'
-  },
-  {
-    title: 'カフェ巡り',
-    icon: '☕',
-    description: '落ち着いた雰囲気のカフェで作業するのが好き',
-    tags: ['コーヒー', 'ノマドワーク', '東京カフェ'],
-    color: 'rgba(245, 158, 11, 0.2)'
-  },
-  {
-    title: '技術記事',
-    icon: '✍️',
-    description: 'Qiitaやnoteで技術記事を書いています',
-    tags: ['Qiita', 'note', 'ブログ'],
-    color: 'rgba(239, 68, 68, 0.2)'
-  }
-]
 
 export default function HobbyPage() {
   const router = useRouter()
+  const hobbies = useHobbies()
+  const meta = useMeta()
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#0a0a0a', pt: 2 }}>
@@ -72,10 +31,10 @@ export default function HobbyPage() {
         
         <Box sx={{ mb: 6, textAlign: 'center' }}>
           <Typography variant="h2" component="h1" gutterBottom sx={{ color: 'white' }}>
-            My Hobby
+            {meta.hobbyPageTitle}
           </Typography>
           <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-            趣味と興味のあること
+            {meta.hobbyPageDescription}
           </Typography>
         </Box>
 

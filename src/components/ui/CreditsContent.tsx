@@ -4,12 +4,15 @@ import { Box, Typography, Link, Paper, IconButton } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import CodeIcon from '@mui/icons-material/Code'
+import { useCredits } from '@/hooks/useContent'
 
 interface CreditsContentProps {
   onBack: () => void
 }
 
 export function CreditsContent({ onBack }: CreditsContentProps) {
+  const credits = useCredits()
+  
   return (
     <Box sx={{ width: '100%', maxWidth: 540 }}>
       <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -40,10 +43,10 @@ export function CreditsContent({ onBack }: CreditsContentProps) {
           <CodeIcon sx={{ color: 'rgba(255, 255, 255, 0.7)' }} />
           <Box>
             <Typography variant="subtitle2" sx={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-              実装者
+              {credits.implementer.label}
             </Typography>
             <Typography variant="h6" sx={{ color: 'white' }}>
-              Claude Code
+              {credits.implementer.name}
             </Typography>
           </Box>
         </Box>
@@ -52,10 +55,10 @@ export function CreditsContent({ onBack }: CreditsContentProps) {
           <GitHubIcon sx={{ color: 'rgba(255, 255, 255, 0.7)' }} />
           <Box>
             <Typography variant="subtitle2" sx={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-              協力者
+              {credits.collaborator.label}
             </Typography>
             <Link 
-              href="https://github.com/nodeshells" 
+              href={credits.collaborator.url} 
               target="_blank"
               rel="noopener noreferrer"
               sx={{ 
@@ -67,7 +70,7 @@ export function CreditsContent({ onBack }: CreditsContentProps) {
               }}
             >
               <Typography variant="h6">
-                nodeshells
+                {credits.collaborator.name}
               </Typography>
             </Link>
           </Box>
@@ -82,7 +85,7 @@ export function CreditsContent({ onBack }: CreditsContentProps) {
           mt: 3
         }}
       >
-        Made with 💙 by AI and Human collaboration
+        {credits.footer}
       </Typography>
     </Box>
   )

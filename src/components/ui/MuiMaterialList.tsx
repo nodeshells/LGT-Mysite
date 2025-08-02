@@ -11,27 +11,15 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { useRouter } from 'next/navigation'
 import { CreditsContent } from './CreditsContent'
 import { ProfileContent } from './ProfileContent'
+import { useNavigation } from '@/hooks/useContent'
 
-const navigationItems = [
-  { 
-    href: "/timeline", 
-    label: "My Timeline", 
-    icon: TimelineIcon,
-    description: "時系列でみる私の歩み"
-  },
-  { 
-    href: "/skills", 
-    label: "My Skills", 
-    icon: CodeIcon,
-    description: "技術スタックとスキルセット"
-  },
-  { 
-    href: "/hobby", 
-    label: "My Hobby", 
-    icon: SportsEsportsIcon,
-    description: "趣味と興味のあること"
-  },
-]
+const iconComponentMap = {
+  AccountCircleIcon: AccountCircleIcon,
+  TimelineIcon: TimelineIcon,
+  CodeIcon: CodeIcon,
+  SportsEsportsIcon: SportsEsportsIcon,
+  InfoIcon: InfoIcon
+}
 
 interface MuiMaterialListProps {
   onContentChange?: (content: 'menu' | 'credits' | 'profile') => void
@@ -39,7 +27,13 @@ interface MuiMaterialListProps {
 
 export function MuiMaterialList({ onContentChange }: MuiMaterialListProps = {}) {
   const router = useRouter()
+  const navigation = useNavigation()
   const [activeContent, setActiveContent] = useState<'menu' | 'credits' | 'profile'>('menu')
+  
+  // Filter navigation items for page navigation (not content switches)
+  const pageNavigationItems = navigation.filter(item => !item.isContentSwitch && item.label !== 'My Profile')
+  const profileItem = navigation.find(item => item.label === 'My Profile')
+  const creditsItem = navigation.find(item => item.label === 'Credits')
   
   const handleContentChange = (content: 'menu' | 'credits' | 'profile') => {
     setActiveContent(content)
@@ -55,45 +49,47 @@ export function MuiMaterialList({ onContentChange }: MuiMaterialListProps = {}) 
         bgcolor: 'transparent',
       }}>
         {/* Profile - Content Switch */}
-        <ListItem disablePadding sx={{ mb: 0.5 }}>
-          <ListItemButton
-            onClick={() => handleContentChange('profile')}
-            sx={{
-              borderRadius: 2,
-              px: 0,
-              '&:hover': {
-                bgcolor: 'rgba(255, 255, 255, 0.05)',
-              },
-            }}
-          >
-            <ListItemIcon sx={{ minWidth: 40 }}>
-              <AccountCircleIcon sx={{ 
-                color: 'rgba(255, 255, 255, 0.7)', 
-                fontSize: 28
-              }} />
-            </ListItemIcon>
-            <ListItemText 
-              primary="My Profile"
-              secondary="私のプロフィールを見る"
-              primaryTypographyProps={{
-                fontSize: '1rem',
-                fontWeight: 400,
-                color: 'white',
+        {profileItem && (
+          <ListItem disablePadding sx={{ mb: 0.5 }}>
+            <ListItemButton
+              onClick={() => handleContentChange('profile')}
+              sx={{
+                borderRadius: 2,
+                px: 0,
+                '&:hover': {
+                  bgcolor: 'rgba(255, 255, 255, 0.05)',
+                },
               }}
-              secondaryTypographyProps={{
-                fontSize: '0.875rem',
-                color: 'rgba(255, 255, 255, 0.6)',
-              }}
-              sx={{ ml: 1, flex: 1 }}
-            />
-            <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)', ml: 'auto' }} />
-          </ListItemButton>
-        </ListItem>
+            >
+              <ListItemIcon sx={{ minWidth: 40 }}>
+                {(() => {
+                  const Icon = iconComponentMap[profileItem.icon as keyof typeof iconComponentMap]
+                  return Icon ? <Icon sx={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 28 }} /> : null
+                })()}
+              </ListItemIcon>
+              <ListItemText 
+                primary={profileItem.label}
+                secondary={profileItem.description}
+                primaryTypographyProps={{
+                  fontSize: '1rem',
+                  fontWeight: 400,
+                  color: 'white',
+                }}
+                secondaryTypographyProps={{
+                  fontSize: '0.875rem',
+                  color: 'rgba(255, 255, 255, 0.6)',
+                }}
+                sx={{ ml: 1, flex: 1 }}
+              />
+              <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)', ml: 'auto' }} />
+            </ListItemButton>
+          </ListItem>
+        )}
 
         {/* Navigation Items */}
-        {navigationItems.map((item) => {
-          const Icon = item.icon
-          return (
+        {pageNavigationItems.map((item) => {
+          const Icon = iconComponentMap[item.icon as keyof typeof iconComponentMap]
+          return Icon ? (
             <ListItem 
               key={item.href} 
               disablePadding
@@ -132,44 +128,46 @@ export function MuiMaterialList({ onContentChange }: MuiMaterialListProps = {}) 
                 <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)', ml: 'auto' }} />
               </ListItemButton>
             </ListItem>
-          )
+          ) : null
         })}
 
         {/* Credits - Content Switch */}
-        <ListItem disablePadding sx={{ mb: 0.5 }}>
-          <ListItemButton
-            onClick={() => handleContentChange('credits')}
-            sx={{
-              borderRadius: 2,
-              px: 0,
-              '&:hover': {
-                bgcolor: 'rgba(255, 255, 255, 0.05)',
-              },
-            }}
-          >
-            <ListItemIcon sx={{ minWidth: 40 }}>
-              <InfoIcon sx={{ 
-                color: 'rgba(255, 255, 255, 0.7)', 
-                fontSize: 28,
-              }} />
-            </ListItemIcon>
-            <ListItemText 
-              primary="Credits"
-              secondary="このサイトを作った人たち"
-              primaryTypographyProps={{
-                fontSize: '1rem',
-                fontWeight: 400,
-                color: 'white',
+        {creditsItem && (
+          <ListItem disablePadding sx={{ mb: 0.5 }}>
+            <ListItemButton
+              onClick={() => handleContentChange('credits')}
+              sx={{
+                borderRadius: 2,
+                px: 0,
+                '&:hover': {
+                  bgcolor: 'rgba(255, 255, 255, 0.05)',
+                },
               }}
-              secondaryTypographyProps={{
-                fontSize: '0.875rem',
-                color: 'rgba(255, 255, 255, 0.6)',
-              }}
-              sx={{ ml: 1, flex: 1 }}
-            />
-            <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)', ml: 'auto' }} />
-          </ListItemButton>
-        </ListItem>
+            >
+              <ListItemIcon sx={{ minWidth: 40 }}>
+                {(() => {
+                  const Icon = iconComponentMap[creditsItem.icon as keyof typeof iconComponentMap]
+                  return Icon ? <Icon sx={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 28 }} /> : null
+                })()}
+              </ListItemIcon>
+              <ListItemText 
+                primary={creditsItem.label}
+                secondary={creditsItem.description}
+                primaryTypographyProps={{
+                  fontSize: '1rem',
+                  fontWeight: 400,
+                  color: 'white',
+                }}
+                secondaryTypographyProps={{
+                  fontSize: '0.875rem',
+                  color: 'rgba(255, 255, 255, 0.6)',
+                }}
+                sx={{ ml: 1, flex: 1 }}
+              />
+              <ChevronRightIcon sx={{ color: 'rgba(255, 255, 255, 0.4)', ml: 'auto' }} />
+            </ListItemButton>
+          </ListItem>
+        )}
         
         <Divider sx={{ 
           my: 2, 
